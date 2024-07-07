@@ -56,7 +56,7 @@ main_auth_kb = InlineKeyboardMarkup(inline_keyboard=main_auth_b)
 @dp.message(CommandStart())
 async def send_welcome(message: types.Message):
     async with httpx.AsyncClient() as client:
-        response = await client.get(f'http://95.174.92.220:8000/students/{message.from_user.id}',
+        response = await client.get(f'http://api:8000/students/{message.from_user.id}',
                                     headers=api_service.headers)
         if response.status_code == 200:
             data = response.json()
